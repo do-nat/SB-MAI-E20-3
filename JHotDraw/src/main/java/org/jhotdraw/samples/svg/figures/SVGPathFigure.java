@@ -130,10 +130,12 @@ public class SVGPathFigure extends AbstractAttributedCompositeFigure implements 
     // empty
     }
 
+    @FeatureEntryPoint(JHotDrawFeatures.LINE_TOOL)
     public void drawFill(Graphics2D g) {
         g.fill(getPath());
     }
 
+    @FeatureEntryPoint(JHotDrawFeatures.LINE_TOOL)
     public void drawStroke(Graphics2D g) {
         g.draw(getPath());
     }
@@ -467,7 +469,7 @@ public class SVGPathFigure extends AbstractAttributedCompositeFigure implements 
      */
     @Override
     @FeatureEntryPoint(JHotDrawFeatures.LINE_TOOL)
-    public boolean handleMouseClick(Point2D.Double p, MouseEvent evt, DrawingView view) {
+    public boolean handleMoBuseClick(Point2D.Double p, MouseEvent evt, DrawingView view) {
         if (evt.getClickCount() == 2 && view.getHandleDetailLevel() % 2 == 0) {
             for (Figure child : getChildren()) {
                 SVGBezierFigure bf = (SVGBezierFigure) child;
