@@ -15,6 +15,8 @@ package org.jhotdraw.geom;
 
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.ArrayList;
+
 import static java.lang.Math.*;
 
 /**
@@ -528,6 +530,7 @@ public class Geom {
     public static Point ovalAngleToPoint(Rectangle r, double angle) {
         Point center = Geom.center(r);
         Point p = Geom.polarToPoint(angle, r.width / 2, r.height / 2);
+        p.translate(2, 0);
         return new Point(center.x + p.x, center.y + p.y);
     }
 

@@ -119,6 +119,7 @@ public abstract class AbstractAttributedCompositeFigure extends AbstractComposit
         }
     }
 
+    // TODO LINE_TOOL duplicated
     public void drawFigure(Graphics2D g) {
         drawChildren(g);
         if (AttributeKeys.FILL_COLOR.get(this) != null) {
@@ -171,6 +172,7 @@ public abstract class AbstractAttributedCompositeFigure extends AbstractComposit
         return r;
     }
 
+    //TODO LINE_TOOL Speculative Generality: remove from this class
     /**
      * This method is called by method draw() to draw the fill
      * area of the figure. AttributedFigure configures the Graphics2D

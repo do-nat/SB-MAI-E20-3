@@ -67,6 +67,7 @@ public class SVGPathFigure extends AbstractAttributedCompositeFigure implements 
         SVGAttributeKeys.setDefaults(this);
     }
 
+    //TODO LINE_TOOL code duplication
     @FeatureEntryPoint(JHotDrawFeatures.LINE_TOOL)
     public void draw(Graphics2D g) {
         double opacity = OPACITY.get(this);
@@ -467,9 +468,8 @@ public class SVGPathFigure extends AbstractAttributedCompositeFigure implements 
     /**
      * Handles a mouse click.
      */
-    @Override
     @FeatureEntryPoint(JHotDrawFeatures.LINE_TOOL)
-    public boolean handleMoBuseClick(Point2D.Double p, MouseEvent evt, DrawingView view) {
+    public boolean handleMouseClick(Point2D.Double p, MouseEvent evt, DrawingView view) {
         if (evt.getClickCount() == 2 && view.getHandleDetailLevel() % 2 == 0) {
             for (Figure child : getChildren()) {
                 SVGBezierFigure bf = (SVGBezierFigure) child;
@@ -495,8 +495,7 @@ public class SVGPathFigure extends AbstractAttributedCompositeFigure implements 
     }
 
     public SVGPathFigure clone() {
-        SVGPathFigure that = (SVGPathFigure) super.clone();
-        return that;
+        return (SVGPathFigure) super.clone();
     }
 
     public void flattenTransform() {
