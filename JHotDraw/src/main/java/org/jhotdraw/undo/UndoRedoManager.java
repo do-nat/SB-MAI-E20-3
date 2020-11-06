@@ -20,6 +20,9 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.undo.*;
 import java.util.*;
+
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
+import org.jhotdraw.app.JHotDrawFeatures;
 import org.jhotdraw.util.*;
 
 /**
@@ -186,6 +189,7 @@ public class UndoRedoManager extends UndoManager {//javax.swing.undo.UndoManager
      * @see CompoundEdit#end
      * @see CompoundEdit#addEdit
      */
+    @FeatureEntryPoint(JHotDrawFeatures.UNDO_REDO)
     public boolean addEdit(UndoableEdit anEdit) {
         if (DEBUG) System.out.println("UndoRedoManager.add "+anEdit);
         if (undoOrRedoInProgress) {
@@ -202,6 +206,7 @@ public class UndoRedoManager extends UndoManager {//javax.swing.undo.UndoManager
     /**
      * Gets the undo action for use as an Undo menu item.
      */
+    @FeatureEntryPoint(JHotDrawFeatures.UNDO_REDO)
     public Action getUndoAction() {
         return undoAction;
     }
@@ -209,6 +214,7 @@ public class UndoRedoManager extends UndoManager {//javax.swing.undo.UndoManager
     /**
      * Gets the redo action for use as a Redo menu item.
      */
+    @FeatureEntryPoint(JHotDrawFeatures.UNDO_REDO)
     public Action getRedoAction() {
         return redoAction;
     }
@@ -249,6 +255,7 @@ public class UndoRedoManager extends UndoManager {//javax.swing.undo.UndoManager
      * The UndoRedoManager ignores all incoming UndoableEdit events,
      * while undo is in progress.
      */
+    @FeatureEntryPoint(JHotDrawFeatures.UNDO_REDO)
     public void undo()
     throws CannotUndoException {
         undoOrRedoInProgress = true;

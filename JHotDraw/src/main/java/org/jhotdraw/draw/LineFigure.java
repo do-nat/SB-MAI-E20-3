@@ -18,6 +18,9 @@ import javax.swing.undo.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 import java.util.*;
+
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
+import org.jhotdraw.app.JHotDrawFeatures;
 import org.jhotdraw.geom.*;
 /**
  * LineFigure.
@@ -40,6 +43,7 @@ public class LineFigure extends BezierFigure {
     // SHAPE AND BOUNDS
     // ATTRIBUTES
     // EDITING
+    @FeatureEntryPoint(JHotDrawFeatures.LINE_TOOL)
     @Override
     public Collection<Handle> createHandles(int detailLevel) {
         LinkedList<Handle> handles = new LinkedList<Handle>();
@@ -67,6 +71,7 @@ public class LineFigure extends BezierFigure {
     /**
      * Handles a mouse click.
      */
+    @FeatureEntryPoint(JHotDrawFeatures.LINE_TOOL)
     @Override
     public boolean handleMouseClick(Point2D.Double p, MouseEvent evt, DrawingView view) {
         if (evt.getClickCount() == 2 && view.getHandleDetailLevel() == 0) {
